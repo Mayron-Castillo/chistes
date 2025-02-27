@@ -7,6 +7,10 @@ button.addEventListener("click", async function jokeApi(){
     try {
         button.textContent = 'Cambiar chiste'
         const response = await fetch(urlApi);
+
+        if(!response.ok){
+            throw new Error(`Error ${response.status}: ${response.statusText}`);
+        }
         const data = await response.json();
         console.log(data.id);
         
