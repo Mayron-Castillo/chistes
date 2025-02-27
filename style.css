@@ -13,9 +13,9 @@ html,body{
     flex-direction: column;
     justify-content: center;
     align-content: center;
+    align-items: center;
     flex-wrap: wrap;
     height: 100%;
-    
 }
 
 .mainText{
@@ -26,9 +26,10 @@ html,body{
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    border: 2px solid #c8ddf5;
+    background-color: #cfdcf6;
+    border: 2px solid #91a5e8;
     width: 450px;
-    height: auto;
+    height: 300px;
 }
 
 #category{
@@ -38,11 +39,30 @@ html,body{
 
 #type{
     color: black;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 .acomodar{
     color: #030303;
-    font-size: 20px;
+    margin-top: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
+.button{
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    margin-top: 15px;
+    padding: 1rem;
+    border: 2px solid #91a5e8;
+    border-radius: 4px;
+    background-color: #cfdcf6;
+    transition: all 0.3 ease-in-out 0.2s;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.button:hover{
+    transform: scale(1.1);
+}

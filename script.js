@@ -1,14 +1,16 @@
 const categoryJoke = document.querySelector("#category");
 const typeJoke = document.querySelector("#type");
-const urlApi = 'https://v2.jokeapi.dev/joke/Any'
+const urlApi = 'https://v2.jokeapi.dev/joke/Any';
+const button = document.querySelector(".button");
 
-async function jokeApi(){
+button.addEventListener("click", async function jokeApi(){
     try {
+        button.textContent = 'Cambiar chiste'
         const response = await fetch(urlApi);
         const data = await response.json();
-        console.log(data);
-        categoryJoke.textContent = `Category: ${data.category}`;
+        console.log(data.id);
         
+        categoryJoke.textContent = `Category: ${data.category}`;
         if(data.type === 'twopart'){
             typeJoke.textContent = `Type: ${data.type}`;
             const jokeTwoParts = document.createElement("p");
@@ -17,9 +19,9 @@ async function jokeApi(){
             resp.classList.add('acomodar');
 
             jokeTwoParts.textContent = `- ${data.setup}`;
-            typeJoke.after(jokeTwoParts);
+            typeJoke.appendChild(jokeTwoParts);
             resp.textContent = `- ${data.delivery}`;
-            typeJoke.after(resp);
+            typeJoke.appendChild(resp);
         }
 
         if(data.type === 'single'){
@@ -27,13 +29,11 @@ async function jokeApi(){
             const joke = document.createElement("p");
             joke.classList.add('acomodar');
             joke.textContent = `- ${data.joke}`;
-            typeJoke.after(joke);
+            typeJoke.appendChild(joke);
         }
-        
-        //tenemos type : 'twopart', setup y delivery y 'single' tiene joke:    
     } catch (error) {
-        
+        console.error(error);
     }
-}
+})
 
 jokeApi();
